@@ -20,10 +20,10 @@ BEGIN
 	p:PROCESS(clk)
 	BEGIN
 		IF RISING_EDGE(clk) then
-			IF((address(15 downto 13) = "000") AND mreq = '0' AND ioreq = '1' AND (rd = '0' OR writemode = '1')) then
+			IF((address(15 downto 13) = "000") AND mreq = '0')  then
 				-- ROM in lower part of memory
 				cs(7 downto 0) <= (0 => '0', others => '1');
-			ELSIF(address(15) = '1' AND mreq = '0' AND ioreq = '1') THEN
+			ELSIF(address(15) = '1' AND mreq = '0') THEN
 				-- RAM in high half of memory
 				cs(7 downto 0) <= (1 => '0', others => '1');
 			ELSIF(address(15 downto 3) = "0000000000000" AND mreq = '1' AND ioreq = '0') THEN
