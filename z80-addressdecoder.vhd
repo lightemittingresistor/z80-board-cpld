@@ -26,7 +26,7 @@ BEGIN
 			ELSIF(address(15) = '1' AND mreq = '0') THEN
 				-- RAM in high half of memory
 				cs(7 downto 0) <= (1 => '0', others => '1');
-			ELSIF(address(15 downto 3) = "0000000000000" AND mreq = '1' AND ioreq = '0') THEN
+			ELSIF(address(7 downto 3) = "00000" AND mreq = '1' AND ioreq = '0') THEN
 				-- IO port in lower part of IO space
 				cs(7 downto 0) <= (2 => '0', others => '1');
 			ELSE
