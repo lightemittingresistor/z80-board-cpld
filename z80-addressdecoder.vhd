@@ -5,13 +5,12 @@ ENTITY z80addressdecoder IS
 	PORT
 	(
 		clk:in STD_LOGIC;
-		address:in STD_LOGIC_VECTOR(15 downto 3);
+		address:in STD_LOGIC_VECTOR(15 downto 0);
 		ioreq:in STD_LOGIC;
 		mreq:in STD_LOGIC;
 		rd:in STD_LOGIC;
 		wr:in STD_LOGIC;
-		cs:out STD_LOGIC_VECTOR(7 downto 0) := (others => '1');
-		writemode:in STD_LOGIC
+		cs:out STD_LOGIC_VECTOR(7 downto 0) := (others => '1')
 	);
 END z80addressdecoder;
 
@@ -29,6 +28,9 @@ BEGIN
 			ELSIF(address(7 downto 3) = "00000" AND mreq = '1' AND ioreq = '0') THEN
 				-- IO port in lower part of IO space
 				cs(7 downto 0) <= (2 => '0', others => '1');
+			ELSIF(address(7 downto 3) = "00001" AND mreq = '1' AND ioreq = '0') THEN
+				-- IO port in lower part of IO space
+				cs(7 downto 0) <= (3 => '0', others => '1');
 			ELSE
 				cs(7 downto 0) <= (others => '1');
 			END IF;

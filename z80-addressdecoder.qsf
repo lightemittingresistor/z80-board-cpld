@@ -36,8 +36,8 @@
 # -------------------------------------------------------------------------- #
 
 
-set_global_assignment -name FAMILY MAX3000A
-set_global_assignment -name DEVICE "EPM3064ALC44-10"
+set_global_assignment -name FAMILY MAX7000AE
+set_global_assignment -name DEVICE "EPM7032AELC44-10"
 set_global_assignment -name TOP_LEVEL_ENTITY z80addressdecoder
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "00:27:28  APRIL 01, 2018"
@@ -48,21 +48,20 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR "-1"
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name MAX7000_DEVICE_IO_STANDARD "3.3-V LVTTL"
-set_location_assignment PIN_4 -to address[3]
-set_location_assignment PIN_5 -to address[4]
-set_location_assignment PIN_6 -to address[5]
-set_location_assignment PIN_8 -to address[6]
-set_location_assignment PIN_9 -to address[7]
-set_location_assignment PIN_11 -to address[8]
-set_location_assignment PIN_12 -to address[9]
-set_location_assignment PIN_14 -to address[10]
-set_location_assignment PIN_16 -to address[11]
+set_location_assignment PIN_5 -to address[3]
+set_location_assignment PIN_6 -to address[4]
+set_location_assignment PIN_8 -to address[5]
+set_location_assignment PIN_9 -to address[6]
+set_location_assignment PIN_11 -to address[7]
+set_location_assignment PIN_12 -to address[8]
+set_location_assignment PIN_14 -to address[9]
+set_location_assignment PIN_16 -to address[10]
+set_location_assignment PIN_17 -to address[11]
 set_location_assignment PIN_18 -to address[12]
 set_location_assignment PIN_19 -to address[13]
 set_location_assignment PIN_20 -to address[14]
 set_location_assignment PIN_21 -to address[15]
 set_location_assignment PIN_43 -to clk
-set_location_assignment PIN_41 -to writemode
 set_location_assignment PIN_40 -to wr
 set_location_assignment PIN_39 -to rd
 set_location_assignment PIN_37 -to mreq
@@ -75,11 +74,10 @@ set_location_assignment PIN_28 -to cs[4]
 set_location_assignment PIN_29 -to cs[5]
 set_location_assignment PIN_31 -to cs[6]
 set_location_assignment PIN_33 -to cs[7]
-set_location_assignment PIN_32 -to TCK
-set_location_assignment PIN_7 -to TDI
-set_location_assignment PIN_38 -to TDO
-set_location_assignment PIN_13 -to TMS
 set_global_assignment -name SIGNALTAP_FILE output_files/stp2.stp
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
+set_location_assignment PIN_4 -to address[2]
+set_location_assignment PIN_2 -to address[1]
+set_location_assignment PIN_44 -to address[0]
