@@ -16,24 +16,22 @@ END z80addressdecoder;
 
 ARCHITECTURE decoder OF z80addressdecoder IS
 BEGIN
-	p:PROCESS(clk)
+	p:PROCESS(address, mreq, ioreq)
 	BEGIN
-		IF RISING_EDGE(clk) then
-			IF((address(15 downto 13) = "000") AND mreq = '0')  then
-				-- ROM in lower part of memory
-				cs(7 downto 0) <= (0 => '0', others => '1');
-			ELSIF(address(15) = '1' AND mreq = '0') THEN
-				-- RAM in high half of memory
-				cs(7 downto 0) <= (1 => '0', others => '1');
-			ELSIF(address(7 downto 3) = "00000" AND mreq = '1' AND ioreq = '0') THEN
-				-- IO port in lower part of IO space
-				cs(7 downto 0) <= (2 => '0', others => '1');
-			ELSIF(address(7 downto 3) = "00001" AND mreq = '1' AND ioreq = '0') THEN
-				-- IO port in lower part of IO space
-				cs(7 downto 0) <= (3 => '0', others => '1');
-			ELSE
-				cs(7 downto 0) <= (others => '1');
-			END IF;
+		IF((address(15 downto 13) = "000") AND mreq = '0')  then
+			-- ROM in lower part of memory
+			cs(7 downto 0) <= (0 => '0', others => '1');
+		ELSIF(address(15) = '1' AND mreq = '0') THEN
+			-- RAM in high half of memory
+			cs(7 downto 0) <= (1 => '0', others => '1');
+		ELSIF(address(7 downto 0) = "00000000" AND mreq = '1' AND ioreq = '0') THEN
+			-- IO port in lower part of IO space
+			cs(7 downto 0) <= (2 => '0', others => '1');
+		ELSIF(address(7 downto 0) = "00000001" AND mreq = '1' AND ioreq = '0') THEN
+			-- IO port in lower part of IO space
+			cs(7 downto 0) <= (3 => '0', others => '1');
+		ELSE
+			cs(7 downto 0) <= (others => '1');
 		END IF;
 	END PROCESS;
 END decoder;
